@@ -1,5 +1,20 @@
 # Authentication
-##Test
+
+The Hero Api implements OAuth 2.0 to allow users to log in to applications without exposing their credentials. Api usage requires several steps:
+
+1. Acquire an access token, and optionally refresh token
+2. Put the access token in headers under `Authorization` key
+3. Refresh the access token when it is about to expire
+
+
+
+##Acquire an access token
+##Authenticating requests
+##Refresh access
+##Invalidate access
+
+
+
 > To authorize, use this code:
 
 ```ruby

@@ -1,2 +1,4 @@
 # Incidents 
-tbc
+##Get all Incidents
+##Get a specific Incident's logs
+##Manage Incident state

@@ -1,4 +1,14 @@
 # Properties
+
+##Get all Properties
+##Get a specific Property
+##Update a specific Property
+##Create a Property
+##Delete a specific Property
+##Manage memberships
+##Manage spaces
+
+
 1. sciaga palikacje
 2. skan sieci
 3. nagradzanie za urzadzenia smart
