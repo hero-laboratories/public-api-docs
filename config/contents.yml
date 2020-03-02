@@ -1,0 +1,123 @@
+vars:
+  backend_url: 'https://public.hero-labs.com'
+  gateway_url: 'adasdasdsa'
+responses:
+  status: {
+    "status": "ok|fail"
+  }
+  "incident_details": {
+    "type": "cloud_disconnection",
+    "title": "Signal Disconnected",
+    "description": "We're having some trouble connecting to Signal.",
+    "status": "active",
+    "severity": "high",
+    "property_id": "009ac3ad-08e8-4e9c-adc7-0c17334ac2a1",
+    "state": "contacting",
+    "detected_at": "2020-02-27T02:59:00.143772Z",
+    "snoozed_until": "2020-02-28T02:59:00.143772Z",
+    "possible_actions": [
+      {"name": "snooze", title: "Snooze"}
+    ]
+  }
+  user_details: {
+    "id": "009ac3ad-08e8-4e9c-adc7-0c17334ac2a1",
+    "email": "test@test.com",
+    "first_name": "John",
+    "last_name": "Rambo",
+    "phone": "123456789",
+    "language": "en"
+  }
+  check_up_details: {
+    "id": "009ac3ad-08e8-4e9c-adc7-0c17334ac2a1",
+    "state": "finished",
+    "status": "okay",
+    "started_at": "2020-02-27T02:59:00.143772Z",
+    "finished_at": "2020-02-27T02:59:00.143772Z",
+    "measuremenets": [
+      {"pressure": 1320, "probed_at": 1570787227456, "state": "okay"},
+      {"pressure": 1320, "probed_at": 1570787227456, "state": "okay"}
+    ]
+  }
+  organization_details: {
+    "id": "009ac3ad-08e8-4e9c-adc7-0c17334ac2a1",
+    "name": "Hero Laboratories Ltd."
+  }
+  "hub_details": {
+    "id": "009ac3ad-08e8-4e9c-adc7-0c17334ac2a1",
+    "name": "Living room hub",
+    "serial_no": "3nr348437fn437f",
+    "version": "1.4.5",
+    "modem_version": "3.2.2",
+    "online": true,
+    "type": "hub_v1"
+  }
+  "thing_details": {
+    "id": "009ac3ad-08e8-4e9c-adc7-0c17334ac2a1",
+    "name": "Living room hub",
+    "serial_no": "3nr348437fn437f",
+    "version": "1.4.5",
+    "radio_connection": true,
+    "cloud_connection": true,
+    "state": "open",
+    "type": "smart_valve"
+  }
+  "thing_statistics": {
+    "total_usage": 1232.12,
+    "total_duration": 231,
+    "data_by_appliance_category": {
+      "dishwasher": {water_consumption: 1232.12, duration: 231}
+    },
+  }
+  "space_details": {
+    "id": "009ac3ad-08e8-4e9c-adc7-0c17334ac2a1",
+    "name": "Living room",
+    "default": true
+  }
+  "role_details": {
+    "id": "009ac3ad-08e8-4e9c-adc7-0c17334ac2a1",
+    "name": "admin"
+  }
+  "property_details": {
+    "id": "009ac3ad-08e8-4e9c-adc7-0c17334ac2a1",
+    "address_1": "Allies Computing Ltd",
+    "address_2": "Manor Farm Barns, Fox Road",
+    "address_3": "Framingham Pigot",
+    "city": "Norwich",
+    "postcode": "NR14 7PZ",
+    "name": "Home",
+    "country": "United Kingdom",
+    "lat":  "latitude",
+    "lng": "longitude",
+    "uprn": "uprn",
+    "created_at": "2020-02-27T02:59:00.143772Z"
+  }
+  pagination: {
+    "page": 1,
+    "page_size": 20,
+    "total_pages": 4
+  }
+payloads:
+  account: {
+    "email": "test@test.com",
+    "first_name": "John",
+    "last_name": "Rambo",
+    "phone": "123456789",
+    "language": "en"
+  }
+  user: {
+    "email": "test@test.com",
+    "first_name": "John",
+    "last_name": "Rambo",
+    "phone": "123456789",
+    "language": "en",
+    "role_id": "009ac3ad-08e8-4e9c-adc7-0c17334ac2a1"
+  }
+  property: {
+    "address_1": "Allies Computing Ltd",
+    "address_2": "Manor Farm Barns, Fox Road",
+    "address_3": "Framingham Pigot",
+    "city": "Norwich",
+    "postcode": "NR14 7PZ",
+    "name": "Home",
+    "country": "United Kingdom",
+  }

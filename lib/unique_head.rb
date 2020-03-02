@@ -1,6 +1,7 @@
 # Unique header generation
 require 'middleman-core/renderers/redcarpet'
 require 'digest'
+require_relative 'dynamic_content'
 class UniqueHeadCounter < Middleman::Renderers::MiddlemanRedcarpetHTML
   def initialize
     super
@@ -20,5 +21,9 @@ class UniqueHeadCounter < Middleman::Renderers::MiddlemanRedcarpetHTML
       friendly_text += "-#{@head_count[friendly_text]}"
     end
     return "<h#{header_level} id='#{friendly_text}'>#{text}</h#{header_level}>"
+  end
+
+  def preprocess(text)
+    DynamicContent.new(text).handle
   end
 end

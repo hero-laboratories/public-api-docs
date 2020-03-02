@@ -13,16 +13,14 @@ toc_footers:
 
 includes:
   - authentication
-  - users
-  - roles
+  - account
+  - organization
   - properties
   - hubs
   - things
   - incidents
-  - check-ups
   - webhooks
   - errors
-  - kittens
 
 search: true
 ---
