@@ -1,5 +1,5 @@
 # Authentication
-
+Deploy test
 The Hero Api implements OAuth 2.0 to allow users to log in to applications without exposing their credentials. Api usage requires several steps:
 
 1. Acquire an access token, and optionally refresh token
