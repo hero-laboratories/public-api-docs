@@ -9,8 +9,7 @@ toc_footers:
 
 includes:
   - authentication
-  - account
-  - organization
+  - users
   - properties
   - hubs
   - things
