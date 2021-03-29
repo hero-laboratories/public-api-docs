@@ -1,5 +1,6 @@
 vars:
-  backend_url: 'https://public.hero-labs.com'
+  backend_url: 'https://api.hero-labs.com'
+  user_service_path: '/user-service'
   gateway_url: 'adasdasdsa'
 responses:
   status: {
