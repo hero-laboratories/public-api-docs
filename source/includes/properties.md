@@ -1,12 +1,17 @@
 # Properties
 
-Property is the richest data model in our system.
+Property is the main object and it may represent a single flat, house, apartment etc.
 
-## Get properties
+It has an owner and all other objects like a sonic, signal, incidents and others are
+either directly or indirectly linked to a property.
+
+All resources and parameters are defined by OpenAPI specification and
+and can be found here: [https://al-iot-core-staging.herokuapp.com/ape/v1/swaggerui](https://al-iot-core-staging.herokuapp.com/ape/v1/swaggerui)
+
 > To list properties, use this code:
 
 ```shell
-curl -X GET "[backend_url][iot_core]/properties" \
+curl -X GET "[backend_url]/ape/v1/properties" \
    -H 'Authorization: Bearer AUTH_TOKEN' \
    -H 'Content-Type: application/json' \
 ```
@@ -14,332 +19,72 @@ curl -X GET "[backend_url][iot_core]/properties" \
 
 ```json
 {
-  "properties": [
-    {
-      "uprn": null,
-      "spaces": [],
-      "postcode": "CF5 1FJ",
-      "name": "Test",
-      "lng": null,
-      "lat": null,
-      "id": "85bc39ca-25c6-49ff-a9bb-014da2e3de91",
-      "created_at": "2021-03-24T09:47:19.256405Z",
-      "country": "United Kingdom",
-      "city": "Cardiff",
-      "address_3": null,
-      "address_2": null,
-      "address_1": null,
-      "active": true
-    }
-  ]  
-}
-```
-
-Lists all properties associated with an access token's owner.
-
-### HTTP Request
-
-`GET [backend_url][iot_core]/properties`
-
-### Parameters
-
-Parameter | Description
---------- | -----------
-uprn | Unique Property Reference Number
-spaces | List of spaces within the property.
-postcode | Property postcode.
-name | Property name.
-lng | Longitude
-lat | Latitude
-id | Property id.
-created_at | When the property was created.
-country | Property address.
-city | Property address.
-address_3 | Property address.
-address_2 | Property address.
-address_1 | Property address.
-active | Whether the property is active.
-
-## Get property
-> To get property, use this code:
-
-```shell
-curl -X GET "[backend_url][iot_core]/properties/{property_id}" \
-   -H 'Authorization: Bearer AUTH_TOKEN' \
-   -H 'Content-Type: application/json'
-```
-
-> Returns JSON structured like this:
-
-```json
-{
-  "property": {
-    "uprn": null,
-    "spaces": [],
-    "postcode": "CF5 1FJ",
-    "name": "Test",
-    "lng": null,
-    "lat": null,
-    "id": "85bc39ca-25c6-49ff-a9bb-014da2e3de91",
-    "created_at": "2021-03-24T09:47:19.256405Z",
-    "country": "United Kingdom",
-    "city": "Cardiff",
-    "address_3": null,
-    "address_2": null,
-    "address_1": null,
-    "active": true
-  }
-}
-```
-
-Returns requested property.
-
-
-### HTTP Request
-
-`GET [backend_url][iot_core]/properties/{property_id}`
-
-## Update property
-
-> To update property, use this code:
-
-```shell
-curl -X PUT "[backend_url][iot_core]/properties/{property_id}" \
-   -H 'Authorization: Bearer AUTH_TOKEN' \
-   -H 'Content-Type: application/json' \
-   -d '{"property": {"name": "Test 2"}}'
-```
-
-> Returns JSON structured like this:
-
-```json
-{
-  "property": {
-    "uprn": null,
-    "spaces": [],
-    "postcode": "CF5 1FJ",
-    "name": "Test 2",
-    "lng": null,
-    "lat": null,
-    "id": "85bc39ca-25c6-49ff-a9bb-014da2e3de91",
-    "created_at": "2021-03-24T09:47:19.256405Z",
-    "country": "United Kingdom",
-    "city": "Cardiff",
-    "address_3": null,
-    "address_2": null,
-    "address_1": null,
-    "active": true
-  }
-}
-```
-
-Updates requested property.
-
-### HTTP Request
-
-`PUT [backend_url][iot_core]/properties/{property_id}`
-
-## Create property
-
-> To create property, use this code:
-
-```shell
-curl -X POST "[backend_url][iot_core]/properties" \
-   -H 'Authorization: Bearer AUTH_TOKEN' \
-   -H 'Content-Type: application/json' \
-   -d '{"property": {
-        "uprn": null,
-        "postcode": "ABC DEF",
-        "name": "Palace",
-        "lng": null,
-        "lat": null,
-        "country": "United Kingdom",
-        "city": "London",
-        "address_3": null,
-        "address_2": null,
-        "address_1": null,
-        "active": true  
-      }}'
-```
-
-> Returns JSON structured like this:
-
-```json
-{
-  "property": {
-    "uprn": null,
-    "spaces": [],
-    "postcode": "SW1A 1AA",
-    "name": "Palace",
-    "lng": null,
-    "lat": null,
-    "id": "85bc39ca-25c6-49ff-a9bb-014da2e3de91",
-    "created_at": "2021-03-24T09:47:19.256405Z",
-    "country": "United Kingdom",
+  "data": {
+    "active": true,
+    "address": "Kensington Gardens",
     "city": "London",
-    "address_3": null,
-    "address_2": null,
-    "address_1": null,
-    "active": true
-  }
+    "country": "United Kingdom",
+    "id": "7bcb5fe0-abcd-25e7-93c5-6e6a71c123d2",
+    "lat": 51.5158392,
+    "lng": -0.1114453,
+    "name": "Kensington Gardens",
+    "postcode": "W8 4PX",
+    "uprn": ""
+  },
+  "page_number": 1,
+  "page_size": 10,
+  "total_entries": 10,
+  "total_pages": 2
 }
 ```
 
-Creates property along with default space.
-
-### HTTP Request
-
-`POST [backend_url][iot_core]/properties`
-
-##Add member
-
-> To add member to property, use this code:
-
-```ruby
-tbc
-```
-
-```python
-tbc
-```
-
-```javascript
-tbc
-```
+## Notifications
+> To fetch details, use this code:
 
 ```shell
-curl -X POST "[backend_url]/properties/{property_id}/memberships" \
+curl -X GET "[backend_url]/ape/v1/properties/{property_id}/notifications" \
    -H 'Authorization: Bearer AUTH_TOKEN' \
    -H 'Content-Type: application/json' \
-   -d {"email": "john.smith@email.me"}
 ```
-
 > Returns JSON structured like this:
 
 ```json
-|response_status|
+{
+  "cloud_disconnection": true,
+  "device_handle_moved": true,
+  "health_check_failed": true,
+  "high_volume_threshold_litres": 300,
+  "long_flow_notification_delay_mins": 60,
+  "low_battery_level": true,
+  "pressure_test_failed": true,
+  "pressure_test_skipped": true,
+  "radio_disconnection": true
+}
 ```
 
-Adds member to requested property. If email does not exist, the user gets created. Regardless of existence in the platform, user
-will get an email with further instructions on how to accept an invitation.
+Part of the property object is notification settings where a user can configure
+what notifications he would like to receive.
 
-### HTTP Request
-
-`POST [backend_url]/properties/{property_id}/memberships`
-
-###Parameters
-
-Parameter | Type | Description
------- | ---- | -----------
-email | String | An invitee's email
-
-## Expel member
-
-> To expel member to property, use this code:
-
-```ruby
-tbc
-```
-
-```python
-tbc
-```
-
-```javascript
-tbc
-```
+## Settings
+> To fetch details, use this code:
 
 ```shell
-curl -X DELETE "[backend_url]/properties/{property_id}/memberships/{membership_id}" \
-   -H 'Authorization: Bearer AUTH_TOKEN' \
-   -H 'Content-Type: application/json'
-```
-
-> Returns JSON structured like this:
-
-```json
-|response_status|
-```
-
-Expels member from requested property.
-
-### HTTP Request
-
-`DELETE [backend_url]/properties/{property_id}/memberships/{memberhsip_id}`
-
-## Add space
-
-> To add space to property, use this code:
-
-```ruby
-tbc
-```
-
-```python
-tbc
-```
-
-```javascript
-tbc
-```
-
-```shell
-curl -X POST "[backend_url]/properties/{property_id}/spaces" \
+curl -X GET "[backend_url]/ape/v1/properties/{property_id}/settings" \
    -H 'Authorization: Bearer AUTH_TOKEN' \
    -H 'Content-Type: application/json' \
-   -d '{"name": "Living room"}'
 ```
-
 > Returns JSON structured like this:
 
 ```json
-|response_space_details|
+{
+  "auto_shut_off": true,
+  "pressure_tests_enabled": true,
+  "pressure_tests_schedule": "03:00:00",
+  "timezone": "Europe/London",
+  "webhook_enabled": true,
+  "webhook_url": "https://api.acme.com/webhooks"
+}
 ```
 
-Creates space for requested property
-
-### HTTP Request
-
-`POST [backend_url]/properties/{property_id}/spaces`
-
-Parameter | Type | Description
------- | ---- | -----------
-name | String | Space name
-
-## Remove space
-
-> To remove space to property, use this code:
-
-```ruby
-tbc
-```
-
-```python
-tbc
-```
-
-```javascript
-tbc
-```
-
-```shell
-curl -X DELETE "[backend_url]/properties/{property_id}/spaces/{space_id}" \
-   -H 'Authorization: Bearer AUTH_TOKEN' \
-   -H 'Content-Type: application/json'
-```
-
-> Returns JSON structured like this:
-
-```json
-|response_status|
-```
-
-Removes space from the property. If there are hubs associated with requested space, those hubs will be re-assigned to default space.
-
-<aside class="notice">
-You cannot remove default space from the property
-</aside>
-
-### HTTP Request
-
-`DELETE [backend_url]/properties/{property_id}/spaces/{space_id}`
+Part of the property object is settings where a user can configure timezone,
+webhook etc.

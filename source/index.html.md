@@ -11,9 +11,10 @@ includes:
   - authentication
   - users
   - properties
-  - hubs
-  - things
+  - signals
+  - sonics
   - incidents
+  - telemetry
   - webhooks
   - errors
 
