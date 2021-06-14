@@ -22,20 +22,20 @@ curl -X POST "[backend_url][user_service_path]/auth/sign_in" \
 
 ```json
 {
-    "user_details": {
-      "id": "901c1d46-c3e0-4b67-8f1d-334716c41234",
-      "email": "jon.doe@gmail.com",
-      "first_name": "Jon",
-      "last_name": "Doe",
-      "full_name": "Jon Doe",
-      "phone": "+44 7911 123456",
-      "roles": [...],
-      "active": true,
-      "language": "en",
-      "organization_id": "68193f60-796a-451a-bc64-bfd0abe11234",
-      "created_at": "2021-03-17T15:36:34.340Z"
-    },    
-    "token_details": "em5HMDJodFZ6eWNWamlETmR1d1pKSlFiUENlSFR6R1lLdEpkQzNHQnorcXpZUVByb2hXSkg0dkpFV3ovQUsrZjNYOGswdk5oS3RmMEdUWkV6SHcvSVgyU1M5RG5CM1Z1Ui9MZlFOSEprWW89LS0yZkgvWVlOMmZMRnQ4MFlHUDA2bEhRPT0=--094552d217355deb13f100917139bc5db5225ac3"
+  "user_details": {
+    "id": "901c1d46-c3e0-4b67-8f1d-334716c41234",
+    "email": "jon.doe@gmail.com",
+    "first_name": "Jon",
+    "last_name": "Doe",
+    "full_name": "Jon Doe",
+    "phone": "+44 7911 123456",
+    "roles": [...],
+    "active": true,
+    "language": "en",
+    "organization_id": "68193f60-796a-451a-bc64-bfd0abe11234",
+    "created_at": "2021-03-17T15:36:34.340Z"
+  },    
+  "token_details": "em5HMDJodFZ6eWNWamlETmR1d1pKSlFiUENlSFR6R1lLdEpkQzNHQnorcXpZUVByb2hXSkg0dkpFV3ovQUsrZjNYOGswdk5oS3RmMEdUWkV6SHcvSVgyU1M5RG5CM1Z1Ui9MZlFOSEprWW89LS0yZkgvWVlOMmZMRnQ4MFlHUDA2bEhRPT0=--094552d217355deb13f100917139bc5db5225ac3"
 
 }
 ```

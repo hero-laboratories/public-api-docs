@@ -2,23 +2,11 @@
 
 Property is the richest data model in our system.
 
-##Get properties
+## Get properties
 > To list properties, use this code:
 
-```ruby
-tbc
-```
-
-```python
-tbc
-```
-
-```javascript
-tbc
-```
-
 ```shell
-curl -X GET "[backend_url]/properties" \
+curl -X GET "[backend_url][iot_core]/properties" \
    -H 'Authorization: Bearer AUTH_TOKEN' \
    -H 'Content-Type: application/json' \
 ```
@@ -26,201 +14,57 @@ curl -X GET "[backend_url]/properties" \
 
 ```json
 {
-  "records": [
-    |response_property_details|, 
-    |response_property_details|
-  ],
-  "pagination": |response_pagination| 
+  "properties": [
+    {
+      "uprn": null,
+      "spaces": [],
+      "postcode": "CF5 1FJ",
+      "name": "Test",
+      "lng": null,
+      "lat": null,
+      "id": "85bc39ca-25c6-49ff-a9bb-014da2e3de91",
+      "created_at": "2021-03-24T09:47:19.256405Z",
+      "country": "United Kingdom",
+      "city": "Cardiff",
+      "address_3": null,
+      "address_2": null,
+      "address_1": null,
+      "active": true
+    }
+  ]  
 }
 ```
 
 Lists all properties associated with an access token's owner.
 
-<aside class="notice">
-Applying filters gives you possibility to fetch more results than just owned/subscribed properties
-</aside>
-
 ### HTTP Request
 
-`GET [backend_url]/properties`
-
-###Filters
-Some of filters are applicable only if you have enough permissions
-
-Filter | Type | Description
------- | ---- | -----------
-ids | Array | Property ids to filter against
-organization_id | String | The organization identifier that property owner's belong to
-name | String | Property name
-city | String | Property city
-postcode | String | Property postcode
-
-##Get property
-> To get property, use this code:
-
-```ruby
-tbc
-```
-
-```python
-tbc
-```
-
-```javascript
-tbc
-```
-
-```shell
-curl -X GET "[backend_url]/properties/{property_id}" \
-   -H 'Authorization: Bearer AUTH_TOKEN' \
-   -H 'Content-Type: application/json' \
-   -d '{"includes": ["spaces", "things", "hubs"]}'
-```
-
-> Returns JSON structured like this:
-
-```json
-{
-  "property": |response_property_details|,
-  "includes": {
-    "spaces": [],
-    "hubs": [],
-    "things": [],
-    "memberships": []
-  }
-}
-```
-
-Returns requested property. 
-
-<aside class="notice">
-Applying includes gives you possibility to enrich response with additional data
-</aside>
-
-### HTTP Request
-
-`GET [backend_url]/properties/{property_id}`
+`GET [backend_url][iot_core]/properties`
 
 ### Parameters
 
-Parameter | Type | Description | Possible values
---------- | ---- | ----------- | ---------------
-includes | Array | List of associated resources to enrich response with | spaces, hubs, things, memberships
+Parameter | Description
+--------- | -----------
+uprn | Unique Property Reference Number
+spaces | List of spaces within the property.
+postcode | Property postcode.
+name | Property name.
+lng | Longitude
+lat | Latitude
+id | Property id.
+created_at | When the property was created.
+country | Property address.
+city | Property address.
+address_3 | Property address.
+address_2 | Property address.
+address_1 | Property address.
+active | Whether the property is active.
 
-
-##Update property
-
-> To update property, use this code:
-
-```ruby
-tbc
-```
-
-```python
-tbc
-```
-
-```javascript
-tbc
-```
-
-```shell
-curl -X PUT "[backend_url]/properties/{property_id}" \
-   -H 'Authorization: Bearer AUTH_TOKEN' \
-   -H 'Content-Type: application/json' \
-   -d '|payload_property|'
-```
-
-> Returns JSON structured like this:
-
-```json
-|response_property_details|
-```
-
-Updates requested property. 
-
-### HTTP Request
-
-`PUT [backend_url]/properties/{property_id}`
-
-###Parameters
-
-Parameter | Type | Description
------- | ---- | -----------
-address_1 | String | First part of the address
-address_2 | String | Second part of the address
-address_3 | String | Third part of the address
-name | String | Property name
-city | String | Property city
-postcode | String | Property postcode
-country | String | Property country
-
-
-##Create property
-
-> To create property, use this code:
-
-```ruby
-tbc
-```
-
-```python
-tbc
-```
-
-```javascript
-tbc
-```
+## Get property
+> To get property, use this code:
 
 ```shell
-curl -X POST "[backend_url]/properties" \
-   -H 'Authorization: Bearer AUTH_TOKEN' \
-   -H 'Content-Type: application/json' \
-   -d '|payload_property|'
-```
-
-> Returns JSON structured like this:
-
-```json
-|response_property_details|
-```
-
-Creates property along with default space.
-
-### HTTP Request
-
-`POST [backend_url]/properties`
-
-###Parameters
-
-Parameter | Type | Description
------- | ---- | -----------
-address_1 | String | First part of the address
-address_2 | String | Second part of the address
-address_3 | String | Third part of the address
-name | String | Property name
-city | String | Property city
-postcode | String | Property postcode
-country | String | Property country
-
-##Delete property
-
-> To delete property, use this code:
-
-```ruby
-tbc
-```
-
-```python
-tbc
-```
-
-```javascript
-tbc
-```
-
-```shell
-curl -X DELETE "[backend_url]/properties/{property_id}" \
+curl -X GET "[backend_url][iot_core]/properties/{property_id}" \
    -H 'Authorization: Bearer AUTH_TOKEN' \
    -H 'Content-Type: application/json'
 ```
@@ -228,14 +72,124 @@ curl -X DELETE "[backend_url]/properties/{property_id}" \
 > Returns JSON structured like this:
 
 ```json
-|response_status|
+{
+  "property": {
+    "uprn": null,
+    "spaces": [],
+    "postcode": "CF5 1FJ",
+    "name": "Test",
+    "lng": null,
+    "lat": null,
+    "id": "85bc39ca-25c6-49ff-a9bb-014da2e3de91",
+    "created_at": "2021-03-24T09:47:19.256405Z",
+    "country": "United Kingdom",
+    "city": "Cardiff",
+    "address_3": null,
+    "address_2": null,
+    "address_1": null,
+    "active": true
+  }
+}
 ```
 
-Deletes requested property.
+Returns requested property.
+
 
 ### HTTP Request
 
-`DELETE [backend_url]/properties/{property_id}`
+`GET [backend_url][iot_core]/properties/{property_id}`
+
+## Update property
+
+> To update property, use this code:
+
+```shell
+curl -X PUT "[backend_url][iot_core]/properties/{property_id}" \
+   -H 'Authorization: Bearer AUTH_TOKEN' \
+   -H 'Content-Type: application/json' \
+   -d '{"property": {"name": "Test 2"}}'
+```
+
+> Returns JSON structured like this:
+
+```json
+{
+  "property": {
+    "uprn": null,
+    "spaces": [],
+    "postcode": "CF5 1FJ",
+    "name": "Test 2",
+    "lng": null,
+    "lat": null,
+    "id": "85bc39ca-25c6-49ff-a9bb-014da2e3de91",
+    "created_at": "2021-03-24T09:47:19.256405Z",
+    "country": "United Kingdom",
+    "city": "Cardiff",
+    "address_3": null,
+    "address_2": null,
+    "address_1": null,
+    "active": true
+  }
+}
+```
+
+Updates requested property.
+
+### HTTP Request
+
+`PUT [backend_url][iot_core]/properties/{property_id}`
+
+## Create property
+
+> To create property, use this code:
+
+```shell
+curl -X POST "[backend_url][iot_core]/properties" \
+   -H 'Authorization: Bearer AUTH_TOKEN' \
+   -H 'Content-Type: application/json' \
+   -d '{"property": {
+        "uprn": null,
+        "postcode": "ABC DEF",
+        "name": "Palace",
+        "lng": null,
+        "lat": null,
+        "country": "United Kingdom",
+        "city": "London",
+        "address_3": null,
+        "address_2": null,
+        "address_1": null,
+        "active": true  
+      }}'
+```
+
+> Returns JSON structured like this:
+
+```json
+{
+  "property": {
+    "uprn": null,
+    "spaces": [],
+    "postcode": "SW1A 1AA",
+    "name": "Palace",
+    "lng": null,
+    "lat": null,
+    "id": "85bc39ca-25c6-49ff-a9bb-014da2e3de91",
+    "created_at": "2021-03-24T09:47:19.256405Z",
+    "country": "United Kingdom",
+    "city": "London",
+    "address_3": null,
+    "address_2": null,
+    "address_1": null,
+    "active": true
+  }
+}
+```
+
+Creates property along with default space.
+
+### HTTP Request
+
+`POST [backend_url][iot_core]/properties`
 
 ##Add member
 
@@ -298,7 +252,7 @@ tbc
 ```shell
 curl -X DELETE "[backend_url]/properties/{property_id}/memberships/{membership_id}" \
    -H 'Authorization: Bearer AUTH_TOKEN' \
-   -H 'Content-Type: application/json' 
+   -H 'Content-Type: application/json'
 ```
 
 > Returns JSON structured like this:
