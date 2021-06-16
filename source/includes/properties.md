@@ -1,24 +1,17 @@
 # Properties
 
-Property is the richest data model in our system.
+Property is the main object and it may represent a single flat, house, apartment etc.
 
-##Get properties
+It has an owner and all other objects like a sonic, signal, incidents and others are
+either directly or indirectly linked to a property.
+
+All resources and parameters are defined by OpenAPI specification and
+and can be found here: [https://al-iot-core-staging.herokuapp.com/ape/v1/swaggerui](https://al-iot-core-staging.herokuapp.com/ape/v1/swaggerui)
+
 > To list properties, use this code:
 
-```ruby
-tbc
-```
-
-```python
-tbc
-```
-
-```javascript
-tbc
-```
-
 ```shell
-curl -X GET "[backend_url]/properties" \
+curl -X GET "[backend_url]/ape/v1/properties" \
    -H 'Authorization: Bearer AUTH_TOKEN' \
    -H 'Content-Type: application/json' \
 ```
@@ -26,366 +19,72 @@ curl -X GET "[backend_url]/properties" \
 
 ```json
 {
-  "records": [
-    |response_property_details|, 
-    |response_property_details|
-  ],
-  "pagination": |response_pagination| 
+  "data": {
+    "active": true,
+    "address": "Kensington Gardens",
+    "city": "London",
+    "country": "United Kingdom",
+    "id": "7bcb5fe0-abcd-25e7-93c5-6e6a71c123d2",
+    "lat": 51.5158392,
+    "lng": -0.1114453,
+    "name": "Kensington Gardens",
+    "postcode": "W8 4PX",
+    "uprn": ""
+  },
+  "page_number": 1,
+  "page_size": 10,
+  "total_entries": 10,
+  "total_pages": 2
 }
 ```
 
-Lists all properties associated with an access token's owner.
-
-<aside class="notice">
-Applying filters gives you possibility to fetch more results than just owned/subscribed properties
-</aside>
-
-### HTTP Request
-
-`GET [backend_url]/properties`
-
-###Filters
-Some of filters are applicable only if you have enough permissions
-
-Filter | Type | Description
------- | ---- | -----------
-ids | Array | Property ids to filter against
-organization_id | String | The organization identifier that property owner's belong to
-name | String | Property name
-city | String | Property city
-postcode | String | Property postcode
-
-##Get property
-> To get property, use this code:
-
-```ruby
-tbc
-```
-
-```python
-tbc
-```
-
-```javascript
-tbc
-```
+## Notifications
+> To fetch details, use this code:
 
 ```shell
-curl -X GET "[backend_url]/properties/{property_id}" \
+curl -X GET "[backend_url]/ape/v1/properties/{property_id}/notifications" \
    -H 'Authorization: Bearer AUTH_TOKEN' \
    -H 'Content-Type: application/json' \
-   -d '{"includes": ["spaces", "things", "hubs"]}'
 ```
-
 > Returns JSON structured like this:
 
 ```json
 {
-  "property": |response_property_details|,
-  "includes": {
-    "spaces": [],
-    "hubs": [],
-    "things": [],
-    "memberships": []
-  }
+  "cloud_disconnection": true,
+  "device_handle_moved": true,
+  "health_check_failed": true,
+  "high_volume_threshold_litres": 300,
+  "long_flow_notification_delay_mins": 60,
+  "low_battery_level": true,
+  "pressure_test_failed": true,
+  "pressure_test_skipped": true,
+  "radio_disconnection": true
 }
 ```
 
-Returns requested property. 
+Part of the property object is notification settings where a user can configure
+what notifications he would like to receive.
 
-<aside class="notice">
-Applying includes gives you possibility to enrich response with additional data
-</aside>
-
-### HTTP Request
-
-`GET [backend_url]/properties/{property_id}`
-
-### Parameters
-
-Parameter | Type | Description | Possible values
---------- | ---- | ----------- | ---------------
-includes | Array | List of associated resources to enrich response with | spaces, hubs, things, memberships
-
-
-##Update property
-
-> To update property, use this code:
-
-```ruby
-tbc
-```
-
-```python
-tbc
-```
-
-```javascript
-tbc
-```
+## Settings
+> To fetch details, use this code:
 
 ```shell
-curl -X PUT "[backend_url]/properties/{property_id}" \
+curl -X GET "[backend_url]/ape/v1/properties/{property_id}/settings" \
    -H 'Authorization: Bearer AUTH_TOKEN' \
    -H 'Content-Type: application/json' \
-   -d '|payload_property|'
 ```
-
 > Returns JSON structured like this:
 
 ```json
-|response_property_details|
+{
+  "auto_shut_off": true,
+  "pressure_tests_enabled": true,
+  "pressure_tests_schedule": "03:00:00",
+  "timezone": "Europe/London",
+  "webhook_enabled": true,
+  "webhook_url": "https://api.acme.com/webhooks"
+}
 ```
 
-Updates requested property. 
-
-### HTTP Request
-
-`PUT [backend_url]/properties/{property_id}`
-
-###Parameters
-
-Parameter | Type | Description
------- | ---- | -----------
-address_1 | String | First part of the address
-address_2 | String | Second part of the address
-address_3 | String | Third part of the address
-name | String | Property name
-city | String | Property city
-postcode | String | Property postcode
-country | String | Property country
-
-
-##Create property
-
-> To create property, use this code:
-
-```ruby
-tbc
-```
-
-```python
-tbc
-```
-
-```javascript
-tbc
-```
-
-```shell
-curl -X POST "[backend_url]/properties" \
-   -H 'Authorization: Bearer AUTH_TOKEN' \
-   -H 'Content-Type: application/json' \
-   -d '|payload_property|'
-```
-
-> Returns JSON structured like this:
-
-```json
-|response_property_details|
-```
-
-Creates property along with default space.
-
-### HTTP Request
-
-`POST [backend_url]/properties`
-
-###Parameters
-
-Parameter | Type | Description
------- | ---- | -----------
-address_1 | String | First part of the address
-address_2 | String | Second part of the address
-address_3 | String | Third part of the address
-name | String | Property name
-city | String | Property city
-postcode | String | Property postcode
-country | String | Property country
-
-##Delete property
-
-> To delete property, use this code:
-
-```ruby
-tbc
-```
-
-```python
-tbc
-```
-
-```javascript
-tbc
-```
-
-```shell
-curl -X DELETE "[backend_url]/properties/{property_id}" \
-   -H 'Authorization: Bearer AUTH_TOKEN' \
-   -H 'Content-Type: application/json'
-```
-
-> Returns JSON structured like this:
-
-```json
-|response_status|
-```
-
-Deletes requested property.
-
-### HTTP Request
-
-`DELETE [backend_url]/properties/{property_id}`
-
-##Add member
-
-> To add member to property, use this code:
-
-```ruby
-tbc
-```
-
-```python
-tbc
-```
-
-```javascript
-tbc
-```
-
-```shell
-curl -X POST "[backend_url]/properties/{property_id}/memberships" \
-   -H 'Authorization: Bearer AUTH_TOKEN' \
-   -H 'Content-Type: application/json' \
-   -d {"email": "john.smith@email.me"}
-```
-
-> Returns JSON structured like this:
-
-```json
-|response_status|
-```
-
-Adds member to requested property. If email does not exist, the user gets created. Regardless of existence in the platform, user
-will get an email with further instructions on how to accept an invitation.
-
-### HTTP Request
-
-`POST [backend_url]/properties/{property_id}/memberships`
-
-###Parameters
-
-Parameter | Type | Description
------- | ---- | -----------
-email | String | An invitee's email
-
-## Expel member
-
-> To expel member to property, use this code:
-
-```ruby
-tbc
-```
-
-```python
-tbc
-```
-
-```javascript
-tbc
-```
-
-```shell
-curl -X DELETE "[backend_url]/properties/{property_id}/memberships/{membership_id}" \
-   -H 'Authorization: Bearer AUTH_TOKEN' \
-   -H 'Content-Type: application/json' 
-```
-
-> Returns JSON structured like this:
-
-```json
-|response_status|
-```
-
-Expels member from requested property.
-
-### HTTP Request
-
-`DELETE [backend_url]/properties/{property_id}/memberships/{memberhsip_id}`
-
-## Add space
-
-> To add space to property, use this code:
-
-```ruby
-tbc
-```
-
-```python
-tbc
-```
-
-```javascript
-tbc
-```
-
-```shell
-curl -X POST "[backend_url]/properties/{property_id}/spaces" \
-   -H 'Authorization: Bearer AUTH_TOKEN' \
-   -H 'Content-Type: application/json' \
-   -d '{"name": "Living room"}'
-```
-
-> Returns JSON structured like this:
-
-```json
-|response_space_details|
-```
-
-Creates space for requested property
-
-### HTTP Request
-
-`POST [backend_url]/properties/{property_id}/spaces`
-
-Parameter | Type | Description
------- | ---- | -----------
-name | String | Space name
-
-## Remove space
-
-> To remove space to property, use this code:
-
-```ruby
-tbc
-```
-
-```python
-tbc
-```
-
-```javascript
-tbc
-```
-
-```shell
-curl -X DELETE "[backend_url]/properties/{property_id}/spaces/{space_id}" \
-   -H 'Authorization: Bearer AUTH_TOKEN' \
-   -H 'Content-Type: application/json'
-```
-
-> Returns JSON structured like this:
-
-```json
-|response_status|
-```
-
-Removes space from the property. If there are hubs associated with requested space, those hubs will be re-assigned to default space.
-
-<aside class="notice">
-You cannot remove default space from the property
-</aside>
-
-### HTTP Request
-
-`DELETE [backend_url]/properties/{property_id}/spaces/{space_id}`
+Part of the property object is settings where a user can configure timezone,
+webhook etc.
