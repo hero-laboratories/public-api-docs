@@ -14,7 +14,7 @@ incident_id | Incident UUID
 incident_type | Type od the incident
 details | Incident details
 property_id | Property UUID
-device_id | Device UUID
+sonic_id | Sonic UUID
 
 ### Example
 
@@ -28,7 +28,7 @@ device_id | Device UUID
     "incident_type": "low_battery_level",
     "details": "User friendly details about the incident.",
     "property_id": "1bcb5548-cd25-11eb-b8bc-0242ac130003",
-    "device_id": "2518d9d6-cd25-11eb-b8bc-0242ac130003"
+    "sonic_id": "2518d9d6-cd25-11eb-b8bc-0242ac130003"
   }
 }
 ```
