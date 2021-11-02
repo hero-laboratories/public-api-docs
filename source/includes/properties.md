@@ -6,7 +6,7 @@ It has an owner and all other objects like a sonic, signal, incidents and others
 either directly or indirectly linked to a property.
 
 All resources and parameters are defined by OpenAPI specification and
-and can be found here: [https://al-iot-core-staging.herokuapp.com/ape/v1/swaggerui](https://al-iot-core-staging.herokuapp.com/ape/v1/swaggerui)
+and can be found here: [https://iot-core.hero-labs.com/ape/v1/swaggerui](https://iot-core.hero-labs.com/ape/v1/swaggerui)
 
 > To list properties, use this code:
 
