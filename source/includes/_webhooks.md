@@ -1,23 +1,26 @@
 # Webhooks
 
 Every callback is signed by a secret key provided by Hero Labs. The signature is
-in each `HL-Signature` header in the following format:
+in each `HL-Signature` where `t` is callback timestamp and `v1` is signature.
+Currently, we support `v1` scheme only.
 
-```
+> HL-Signature value
+
+```text
 t=1635785969,v1=0ac7a6ca1b05dd340fcbf17144fe00e84d986cade8dbea7a8c4ecca9def9b815
 ```
 
-Where `t` is callback timestamp and `v1` is signature. Currently, we support
-`v1` scheme only.
-
 In order to verify the payload you need to compute HMAC with the sha256 of the
-following:
+timestamp and response body.
 
-```
+> Input for HMAC
+
+```text
 <timestamp received in HL-Signature>.<response body from the callback>
 ```
 
-The last step is to compare `v1` signature from the header with your result. It is advisable to have tolerance for delivering a callback maximum up to ten minutes.
+The last step is to compare `v1` signature from the header with your result.
+It is advisable to have tolerance for delivering a callback maximum up to ten minutes.
 
 Our implementation follows [Stripe's specification](https://stripe.com/docs/webhooks/signatures)
 
