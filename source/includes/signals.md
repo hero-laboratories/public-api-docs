@@ -4,7 +4,7 @@ A signal object is a representation of a Signal device (sometimes called hub) th
 communicates with WiFi and Sonic (a valve installed on a pipe).
 
 All resources and parameters are defined by OpenAPI specification and
-and can be found here: [https://al-iot-core-staging.herokuapp.com/ape/v1/swaggerui](https://al-iot-core-staging.herokuapp.com/ape/v1/swaggerui)
+and can be found here: [https://iot-core.hero-labs.com/ape/v1/swaggerui](https://iot-core.hero-labs.com/ape/v1/swaggerui)
 
 > To list signals, use this code:
 

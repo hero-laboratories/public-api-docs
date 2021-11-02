@@ -4,7 +4,7 @@ A sonic object is a representation of a Sonic device (sometimes called thing or 
 that can open or close a valve, measure temperature, water flow etc.
 
 All resources and parameters are defined by OpenAPI specification and
-and can be found here: [https://al-iot-core-staging.herokuapp.com/ape/v1/swaggerui](https://al-iot-core-staging.herokuapp.com/ape/v1/swaggerui)
+and can be found here: [https://iot-core.hero-labs.com/ape/v1/swaggerui](https://iot-core.hero-labs.com/ape/v1/swaggerui)
 
 > To list sonics, use this code:
 
