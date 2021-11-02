@@ -14,10 +14,10 @@ In order to verify the payload you need to compute HMAC with the sha256 of the
 following:
 
 ```
-<timestamp received in HL-Signature>.<JSON body from the callback>
+<timestamp received in HL-Signature>.<response body from the callback>
 ```
 
-The last step is to compare `v1` signature from the header with your result. Tolerance for delivering a callback is ten minutes.
+The last step is to compare `v1` signature from the header with your result. It is advisable to have tolerance for delivering a callback maximum up to ten minutes.
 
 Our implementation follows [Stripe's specification](https://stripe.com/docs/webhooks/signatures)
 
