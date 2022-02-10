@@ -30,14 +30,6 @@ Our implementation follows [Stripe's specification](https://stripe.com/docs/webh
 
 Webhook will receive all events related to incidents.
 
-Incidents have the following lifecycle:
-
-```
-created -> dismissed -> resolved
-      │                 ▲
-      └─────────────────┘
-```
-
 ### Parameters
 
 Parameter | Description
@@ -47,9 +39,8 @@ data | An object containing incident details.
 
 ### Incident event types
 
-- incident_created - the event is sent on incident creation
-- incident_dismissed - the event is sent when user dissmissed the incident
-- incident_resolved - the event is sent when incident conditions no longer met and it has been resolved
+- incident.created - the event is sent on incident creation
+- incident.closed - the event is sent when user dissmissed the incident or it has been resolvead
 
 ### Incident data
 
@@ -80,7 +71,7 @@ sonic_id | Sonic UUID
 
 ```json
 {
-  "type": "incident_created",
+  "type": "incident.created",
   "data": {
     "incident_id": "cec50104-cd24-11eb-b8bc-0242ac130003",
     "incident_type": "low_battery_level",
