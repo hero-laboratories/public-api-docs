@@ -17,6 +17,7 @@ includes:
   - telemetry
   - webhooks
   - errors
+  - local API
 
 search: true
 ---
