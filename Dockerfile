@@ -11,8 +11,7 @@ RUN gem install bundler --version '2.0.2'
 RUN bundle install
 
 COPY . /usr/src/app
-VOLUME /usr/src/app/source
 
 EXPOSE 4567
 
-CMD ["bundle", "exec", "middleman", "server", "--watcher-force-polling"]
+CMD ["bundle", "exec", "middleman", "server", "--server-name", "0.0.0.0",  "--watcher-force-polling"]

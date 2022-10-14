@@ -1,0 +1,28 @@
+name: staging
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+      - konstantinivanov/sc-7620/as-a-devops-i-want-to-migrate-documentation
+
+jobs:
+  deploy:
+    uses:  "hero-laboratories/.github/.github/workflows/aws-deploy.yaml@master"
+    with:
+      DOCKER_BUILD_OPTIONS: "--build-arg=RACK_ENV=production"
+      AWS_REGION: eu-west-2
+      ECR_REPOSITORY: 973805631139.dkr.ecr.eu-west-2.amazonaws.com/docs
+      ECS_SERVICE: docs
+      ECS_CLUSTER: hl-staging
+      ECS_TASK_DEFINITION: .aws/task-definition.json
+      CONTAINER_NAME: docs
+      SLACK_CHANNEL: "releases"
+      SLACK_TITLE: "[staging] docs"
+      SLACK_MESSAGE: "Post Content: https://docs.hero-labs.net"
+    secrets:
+      AWS_ACCESS_KEY: "${{ secrets.AWS_ACCESS_KEY_STAGING }}"
+      AWS_SECRET_KEY: "${{ secrets.AWS_SECRET_KEY_STAGING }}"
+      SLACK_WEBHOOK: "${{ secrets.SLACK_WEBHOOK }}"
+
